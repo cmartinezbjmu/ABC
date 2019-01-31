@@ -1,0 +1,61 @@
+
+{% load static %}
+{% block title %}Crear evento{% endblock %}
+{% block content %}
+
+<style>.errorlist{color:red;}</style>
+<main role="main">
+  <div class="container">
+    <div class="row mt-3 mb-5">
+      <div class="col-md-9 mx-auto">
+          {% if messages %} {% for message in messages %}
+    <div class="alert {{ message.tags }} float-message">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}<strong>ERROR: </strong> {% endif %} {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}<strong>SUCCESS: </strong>        {% endif %} {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}<strong>INFO: </strong> {% endif %} {{ message }}
+    </div>
+    {% endfor %} {% endif %}
+            <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+                <div class="fieldWrapper">
+                    {{ form.nombre.errors }}
+                    {{ form.nombre.label_tag }}
+                    {{ form.nombre }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.categoria.errors }}
+                    {{ form.categoria.label_tag }}
+                    {{ form.categoria }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.lugar.errors }}
+                    {{ form.lugar.label_tag }}
+                    {{ form.lugar }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.direccion.errors }}
+                    {{ form.direccion.label_tag }}
+                    {{ form.direccion }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.fecha_inicio.errors }}
+                    {{ form.fecha_inicio.label_tag }}
+                    {{ form.fecha_inicio }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.fecha_fin.errors }}
+                    {{ form.fecha_fin.label_tag }}
+                    {{ form.fecha_fin }}
+                </div>
+                <div class="fieldWrapper">
+                    {{ form.tipo.errors }}
+                    {{ form.tipo.label_tag }}
+                    {{ form.tipo }}
+                </div>
+
+                <input type="submit" class="btn btn-primary mt-2" value="Crear evento" />
+            </form>
+        </div>
+    </div>
+  </div>
+</main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+      <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+{% endblock %}

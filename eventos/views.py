@@ -3,7 +3,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.shortcuts import render, redirect
-#from .models import Imagen, ImageForm, UserForm
+from django.views.generic.edit import CreateView
+from .models import Evento
+from eventos.forms import EventoForm
+from django.urls import reverse_lazy
 from django.http import HttpResponse, HttpResponseRedirect
 # Create your views here.
 
@@ -27,3 +30,11 @@ def login_view(request):
             mensaje = 'Nombre de usuario o clave no valido'
 
     return render(request, 'eventos/login.html', {'mensaje': mensaje})
+
+
+
+class EventoCreate(CreateView):
+    model = Evento
+    form_class = EventoForm
+    template_name = 'forms/evento-form.html'
+    success_url = reverse_lazy('login')

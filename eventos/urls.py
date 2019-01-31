@@ -1,6 +1,7 @@
 from django.urls import path
 from django.conf.urls import url
 from . import views
+from eventos.views import EventoCreate, login_view
 
 app_name = 'eventos'
 
@@ -16,6 +17,7 @@ app_name = 'eventos'
 
 
 urlpatterns = [
-    url(r'^login/$', views.login_view, name='login'),
    #path('', listadoEventos, name='index'),
+    path('crear-evento/', EventoCreate.as_view(), name='create-evento'),
+    path('login/', login_view, name='login'),
 ]
