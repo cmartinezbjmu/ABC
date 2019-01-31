@@ -5,12 +5,14 @@
 {% include 'eventos/evento_menu.html' %}
 <link rel="stylesheet" href="/static/css/home.css">
 <main role="main">
+ {% if user.is_authenticated %}
     <h1 class="text-center mb-xl-5">Listado de eventos</h1>
   <div class="container mb-4">
       {% if not evento_list %}
       <h3 class="text-center">No tienes eventos registrados.</h3>
     {% else %}
     {% for evento in evento_list|dictsortreversed:"id" %}
+        {% if user == evento.usuario %}
       <div class="row mt-3">
         <div class="card w-100">
             <div class="card-body">
@@ -38,6 +40,7 @@
             </div>
         </div>
       </div>
+    {% endif %}
     {% endfor %}
     {% endif %}
   </div>
@@ -71,5 +74,9 @@
         </ul>
       </nav>
     {% endif %}
+                {% else %}
+                    <li><a href="{% url 'eventos:addUser' %}">Registro</a></li>
+                    <li><a class="glyphicon glyphicon-log-in" href="{% url 'eventos:login' %}">Login</a></li>
+                {% endif %}
 </main>
 {% endblock %}

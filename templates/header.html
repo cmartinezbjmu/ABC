@@ -2,6 +2,15 @@
 <nav class="navbar navbar-expand-lg navbar-light navu" >
 <img src="{% static 'img/logo-1.png' %}" class="logou">
 <div class="container ml-1">
-
+    <a class="navbar-brand" href="{% url 'eventos:index' %}">ABC</a>
+    <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li><a class="glyphicon glyphicon-user" href="{% url 'eventos:index' %}"> {{ user.username }}</a></li>
+                    <li><a class="glyphicon glyphicon-log-out" href="{% url 'eventos:logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'eventos:addUser' %}">Registro</a></li>
+                    <li><a class="glyphicon glyphicon-log-in" href="{% url 'eventos:login' %}">Login</a></li>
+                {% endif %}
+    </ul>
 </div>
 </nav>
