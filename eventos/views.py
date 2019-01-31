@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.shortcuts import render, redirect
+from django.views.generic import ListView
 from django.views.generic.edit import CreateView
 from .models import Evento
 from eventos.forms import EventoForm
@@ -38,3 +39,12 @@ class EventoCreate(CreateView):
     form_class = EventoForm
     template_name = 'forms/evento-form.html'
     success_url = reverse_lazy('login')
+
+
+"""
+Vista de eventos
+"""
+class EventoListView(ListView):
+    model = Evento
+    template_name = 'eventos/evento_list.html'
+    paginate_by = 50

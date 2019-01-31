@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from datetime import datetime
 
@@ -22,6 +23,7 @@ class Evento(models.Model):
     fecha_inicio = models.DateField(blank=True, null=True, default=datetime.now)
     fecha_fin = models.DateField(blank=True, null=True)
     tipo = models.CharField(max_length=1, choices=TYPES_EVENT)
+    usuario =  models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombre

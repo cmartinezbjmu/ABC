@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: #dfe4ea;
+    color: #192a56;
+    font-family: 'Lato', 'Arial', 'sans-serif';
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+}
+
+.navu {
+    background-color: #fff;
+}
+
+.navu-sec{
+    background-color: #ecf0f1;
+}
+
+
+/*-------- BUTTONS ----------*/
+
+.btnn:link,
+.btnn:visited,
+.btn-b,
+input[type=submit] {
+    display: inline-block;
+    padding: 5px 15px;
+    font-size: 90%;
+    text-decoration: none;
+    border-radius: 200px;
+    color: #3d3d3d;
+    -webkit-transition: background-color 0.5s, border 0.5s, color 0.5s;
+    transition: background-color 0.5s, border 0.5s, color 0.5s;
+}
+
+.btn-full:link,
+.btn-full:visited,
+.btn-bf,
+input[type=submit] {
+    background-color: #ffeaa7;
+    border: 1px solid #ffeaa7;
+    color: #3d3d3d;
+    margin-right: 15px;
+}
+
+.btn-ghost:link,
+.btn-ghost:visited
+.btn-bg{
+    border: 2px solid #ffeaa7;
+    color: #3d3d3d;
+}
+
+.btnn:hover,
+.btnn:active,
+.btn-b:hover,
+.btn-b:active,
+input[type=submit]:hover,
+input[type=submit]:active {
+    background-color: #fdcb6e;
+}
+
+.btn-full:hover,
+.btn-full:active,
+.btn-bf{
+    border: 1px solid #fdcb6e;
+}
+
+.btn-ghost:hover,
+.btn-ghost:active,
+.btn-bg{
+    border: 2px solid #fdcb6e;
+    color: #3d3d3d;
+}
+
+
+/* Logo Universidad */
+
+.logou {
+    width: 10%;
+    height: 2%;
+    margin-left: 5%
+}
+
+
+/* Icons */
+
+.icon-small {
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    color: #3d3d3d;
+    font-size: 120%;
+    margin-right: 10px;
+    line-height: 120%;
+    vertical-align: middle;
+    margin-top: -5px;
+}
+
+/*-------- LINKS ----------*/
+
+a:link,
+a:visited {
+    color: #fdcb6e;
+    text-decoration: none;
+    padding-bottom: 1px;
+    border-bottom: 1px solid #ffeaa7;
+    -webkit-transition: border-botton 0.2s, color 0.2s;
+    transition: border-botton 0.2s, color 0.2s;
+}
+
+a:hover,
+a:active {
+    color: #3d3d3d;
+    border-bottom: 1px solid transparent;
+}
+
+
+/* Tablas */
+
+.contentTitle
+{
+  margin-top: 1vh;
+}
+
+.recursoName
+{
+  color: #7a7a7a;
+}
+
+.dia h2
+{
+  display: inline-block;
+  padding: 0.5vh;
+  background-color: #f4f9ff;
+  border: 1px solid #babdc1;
+  border-bottom: None;
+}
+
+.entradas
+{
+  position: relative;
+  top: -12px;
+  margin-top: 0;
+  padding: 1vh;
+  background-color: #f4f9ff;
+  border-radius: 20px;
+  box-shadow: 0px 0px 15px #888888;
+  overflow: hidden;
+}
+
+.newEntradaBtn
+{
+  margin-bottom: 10vh;
+}
+
+
+
+/* Etiquetas */
+
+.etiqueta{
+    margin: 1vw;
+    border-radius: 10px;
+    width: auto;
+    height: auto;
+}
+
+.etiqueta-item{
+    padding: 1px ;
+}

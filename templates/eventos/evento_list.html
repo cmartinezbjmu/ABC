@@ -1,0 +1,75 @@
+{% extends 'root.html' %}
+{% load static %}
+{% block title %}Eventos{% endblock %}
+{% block content %}
+{% include 'eventos/evento_menu.html' %}
+<link rel="stylesheet" href="/static/css/home.css">
+<main role="main">
+    <h1 class="text-center mb-xl-5">Listado de eventos</h1>
+  <div class="container mb-4">
+      {% if not evento_list %}
+      <h3 class="text-center">No tienes eventos registrados.</h3>
+    {% else %}
+    {% for evento in evento_list|dictsortreversed:"id" %}
+      <div class="row mt-3">
+        <div class="card w-100">
+            <div class="card-body">
+              <div class="col-md-12 mx-auto">
+                <div class="row">
+                    <h5 class="card-title">Evento: {{evento.nombre}} </h5>
+                </div>
+                </div>
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-5 mx-auto">
+                    <p><b>Categoría: </b>{{evento.get_categoria_display}}</p>
+                    <p><b>Lugar: </b>{{evento.lugar}}</p>
+                </div>
+
+                  <div class="col-md-7 " >
+                      <p><b>Tipo: </b>{{evento.get_tipo_display}}</p>
+                  </div>
+                </div>
+                   <p>
+
+                    </p>
+              </div>
+
+            </div>
+        </div>
+      </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+    <!-- Menú de paginación -->
+    {% if is_paginated %}
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+          {% if page_obj.has_previous %}
+            <li class="page-item ">
+              <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+            </li>
+          {% else %}
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">&laquo;</a>
+            </li>
+          {% endif %}
+          {% for i in paginator.page_range %}
+            <li class="page-item {% if page_obj.number == i %}active{% endif %}">
+              <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+            </li>
+          {% endfor %}
+          {% if page_obj.has_next %}
+            <li class="page-item ">
+              <a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+            </li>
+          {% else %}
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">&raquo;</a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    {% endif %}
+</main>
+{% endblock %}
