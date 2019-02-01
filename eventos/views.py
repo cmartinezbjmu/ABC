@@ -8,7 +8,7 @@ from django.views.generic.edit import CreateView
 from .models import Evento
 from .forms import UserForm
 from eventos.forms import EventoForm
-from django.urls import reverse_lazy
+from django.views.generic.detail import DetailView
 from django.http import HttpResponse, HttpResponseRedirect
 # Create your views here.
 
@@ -40,7 +40,7 @@ def add_user_view(request):
             user_model.email = email
             user_model.save()
 
-            return HttpResponseRedirect(reverse('login'))
+            return HttpResponseRedirect(reverse('eventos:login'))
     else:
         form = UserForm()
     context = {
@@ -48,14 +48,6 @@ def add_user_view(request):
     }
 
     return render(request, 'eventos/registro.html', context)
-
-
-
-class EventoCreate2(CreateView):
-    model = Evento
-    form_class = EventoForm
-    template_name = 'forms/evento-form.html'
-    success_url = reverse_lazy('eventos:index')
 
 def EventoCreate(request):
     if request.method == 'POST': #Si el usuario está enviando el formulario con datos
@@ -83,6 +75,12 @@ def logout_view(request):
     return HttpResponseRedirect(reverse('eventos:login'))
 
 
+def logged(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('eventos:index'))
+    else:
+        return login(request)
+
 """
 Vista de eventos
 """
@@ -90,3 +88,8 @@ class EventoListView(ListView):
     model = Evento
     template_name = 'eventos/evento_list.html'
     paginate_by = 50
+
+
+class EventoDetailView(DetailView):
+    model = Evento
+    template_name = 'eventos/evento_detail.html'

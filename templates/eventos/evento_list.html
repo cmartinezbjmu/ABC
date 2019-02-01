@@ -5,7 +5,6 @@
 {% include 'eventos/evento_menu.html' %}
 <link rel="stylesheet" href="/static/css/home.css">
 <main role="main">
- {% if user.is_authenticated %}
     <h1 class="text-center mb-xl-5">Listado de eventos</h1>
   <div class="container mb-4">
       {% if not evento_list %}
@@ -24,17 +23,15 @@
               <div class="col-md-12">
                 <div class="row">
                   <div class="col-md-5 mx-auto">
-                    <p><b>Categoría: </b>{{evento.get_categoria_display}}</p>
-                    <p><b>Lugar: </b>{{evento.lugar}}</p>
+                    <p><b>Fecha de inicio: </b>{{evento.fecha_inicio}}</p>
                 </div>
-
                   <div class="col-md-7 " >
-                      <p><b>Tipo: </b>{{evento.get_tipo_display}}</p>
+                      <p><b>Lugar: </b>{{evento.lugar}}</p>
                   </div>
                 </div>
                    <p>
-
-                    </p>
+                       <a href="{% url 'eventos:detail' evento.id %}">Detalle</a>
+                   </p>
               </div>
 
             </div>
@@ -74,9 +71,5 @@
         </ul>
       </nav>
     {% endif %}
-                {% else %}
-                    <li><a href="{% url 'eventos:addUser' %}">Registro</a></li>
-                    <li><a class="glyphicon glyphicon-log-in" href="{% url 'eventos:login' %}">Login</a></li>
-                {% endif %}
 </main>
 {% endblock %}

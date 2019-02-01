@@ -12,6 +12,11 @@
     <title>Registro</title>
 </head>
 <body>
+<div class="container ml-1">
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="{% url 'eventos:login' %}">Iniciar sesión</a></li>
+    </ul>
+</div>
 {% block content %}
     <div class="col-md-6 col-sm-offset-3">
         <div class="page-header">

@@ -5,11 +5,10 @@
     <a class="navbar-brand" href="{% url 'eventos:index' %}">ABC</a>
     <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
-                    <li><a class="glyphicon glyphicon-user" href="{% url 'eventos:index' %}"> {{ user.username }}</a></li>
-                    <li><a class="glyphicon glyphicon-log-out" href="{% url 'eventos:logout' %}">Logout</a></li>
+                    <li><a class="glyphicon glyphicon-log-out" href="{% url 'eventos:logout' %}">Salir</a></li>
                 {% else %}
                     <li><a href="{% url 'eventos:addUser' %}">Registro</a></li>
-                    <li><a class="glyphicon glyphicon-log-in" href="{% url 'eventos:login' %}">Login</a></li>
+                    <li><a class="glyphicon glyphicon-log-in" href="{% url 'eventos:login' %}">Ingresar</a></li>
                 {% endif %}
     </ul>
 </div>

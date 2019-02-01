@@ -1,7 +1,7 @@
 from django.urls import path
 from django.conf.urls import url
 from . import views
-from eventos.views import EventoCreate, login_view, EventoListView
+from eventos.views import EventoCreate, login_view, EventoListView, EventoDetailView
 
 app_name = 'eventos'
 
@@ -17,9 +17,11 @@ app_name = 'eventos'
 
 
 urlpatterns = [
-    path('', EventoListView.as_view(), name='index'),
+    path('eventos', EventoListView.as_view(), name='index'),
     path('crear-evento/', EventoCreate, name='create-evento'),
     path('login/', login_view, name='login'),
+    url(r'^$', views.logout_view, name='logged'),
     url(r'^logout/$', views.logout_view, name='logout'),
     url(r'^addUser/$', views.add_user_view, name='addUser'),
+    path('eventos/<int:pk>', EventoDetailView.as_view(), name='detail'),
 ]
